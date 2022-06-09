@@ -88,7 +88,7 @@ class App < Sinatra::Base
       user[:email] = '' if !current_user || !current_user[:staff]
       user
     end
-    
+
     def staff?
       current_user && current_user[:staff]
     end

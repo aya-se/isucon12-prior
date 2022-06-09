@@ -23,4 +23,5 @@ CREATE TABLE `reservations` (
   `schedule_id` VARCHAR(255) NOT NULL,
   `user_id`     VARCHAR(255) NOT NULL,
   `created_at`  DATETIME(6) NOT NULL
+  UNIQUE `idx_pair` (`schedule_id`, `user_id`)
 ) ENGINE=InnoDB DEFAULT CHARACTER SET=utf8mb4;

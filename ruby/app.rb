@@ -46,12 +46,12 @@ class App < Sinatra::Base
 
     def get_reservations(schedule)
       # reservations = db.xquery('SELECT * FROM `reservations` WHERE `schedule_id` = ?', schedule[:id]).map do |reservation|
-        # reservation[:user] = get_user(reservation[:user_id])
-        # reservation
+      #   reservation[:user] = get_user(reservation[:user_id])
+      #   reservation
       # end
       # schedule[:reservations] = reservations
       # schedule[:reserved] = reservations.size
-      
+
       reservations = db.xquery(
         'SELECT ' +
         '`r`.`id` AS `r_id`, `r`.`schedule_id` AS `r_schedule_id`, `r`.`user_id` AS `r_user_id`, `r`.`created_at` AS `r_created_at`, ' +
@@ -71,6 +71,11 @@ class App < Sinatra::Base
             user[key] = key == :email && !staff? ? '' : val
           end
         end
+
+        reservation
+      end
+      schedule[:reservations] = reservations
+      schedule[:reserved] = reservations.size
     end
 
     def get_reservations_count(schedule)
